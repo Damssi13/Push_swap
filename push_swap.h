@@ -4,7 +4,7 @@
 
 typedef struct s_stack{
     int value;
-    struct stack *next;
+    struct s_stack *next;
 }stack;
 
 
