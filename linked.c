@@ -18,11 +18,11 @@ void    stack_addback(stack *a, stack *newnode)
     a->next = newnode;
 }
 
-
 void    parse_args(int ac, char **av)
 {
     int i;
     static char *all_args;
+
     i = 1;
     while(i < ac)
     {

@@ -1,0 +1,16 @@
+#include "push_swap.h"
+
+ft_putstr(char *str)
+{
+    while(*str)
+    {
+        write(2, *str, 1);
+        str++;
+    }
+}
+
+ft_error(char *str)
+{
+    write(2, "Error\n", 6);
+    ft_putstr(str);
+}
