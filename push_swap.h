@@ -8,11 +8,10 @@ typedef struct s_stack{
 }stack;
 
 
-#include "./Libft/libft.h"
+#include "../libft/libft.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 
-stack    *add_node(stack *a, int value);
 
 #endif

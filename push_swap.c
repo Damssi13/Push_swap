@@ -1,7 +1,5 @@
 #include "push_swap.h"
 
-stack    *add_node(stack *a, int value);
-
 void    put_error(char *str)
 {
     int i;
@@ -55,6 +53,7 @@ int     divide_args(char *str)
 //     a = newnode;
 //     return ;
 // }
+
 stack   *new_node(int value)
 {
     stack *newnode;
@@ -65,45 +64,65 @@ stack   *new_node(int value)
     return(newnode);
 }
 
-stack    *add_node(stack *a, int value)
+ void    add_node(stack *a, stack *node)
 {
     while(a->next)
         a = a->next;
-        
-    node->next = NULL;
-    node->value = value; 
-    a->next = node;
+
+    a->next = node; 
+    
 }
 
 int     main(int ac, char **av)
 {
-    stack *a;
+    // stack *a;
     int i;
     int j;
     char **strs;
     int res;
+    int array[500];
+    int index;
 
+    index = 0;
     i = 1;
     j = 0;
     while(i <= ac)
     {
-        if(divide_args(av[i]))
+        if(divide_args(av[i])) //it checks whether the arg is a string or a single entity
         {
             strs = ft_split(av[i],' ');
             while(strs[j] != NULL)
             {   
-                res = ft_atoi(strs[j]);
-                add_node(a, res);
-                j++;
+                res = ft_atoi(strs[j++]);
+                array[index++] = res;
             }
         }
         else
         {
             res = ft_atoi(av[i]);
-            add_node(a, new_node(res));
+            array[index++] = res;
         }
-        
         i++;
     }
+    check_double(array,index);
 
+}
+
+void    check_double(int *array, int index)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while(i != index)
+    {
+        j = 1;
+        while(j != index)
+        {
+            if(array[i] == array[i + j])
+                put_error("double arguments !");
+            j++;
+        }
+        i++;
+    }
 }
