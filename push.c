@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-
 void    space_check(char *str)
 {
     while(*str)
@@ -26,12 +25,14 @@ void    check_unit(char *str)
     }
 }
 
-int     *parsing_args(int ac, char **av, int i)
+int main(int ac, char **av)
 {
+    int i;
     char *str;
     int *array;
     char **res;
 
+    i = 1;
     str = NULL;
     while(i < ac)
     {
@@ -53,52 +54,3 @@ int     *parsing_args(int ac, char **av, int i)
     }
     return(array);
 }
-
-
-// stack   *new_node(int value)
-// {
-//     stack *newnode;
-
-//     newnode = malloc(sizeof(stack));
-//     newnode->value = value;
-//     newnode->next = NULL;
-//     return(newnode);
-// }
-
-//  void    add_node(stack *a, stack *node)
-// {
-//     while(a->next)
-//         a = a->next;
-
-//     a->next = node; 
-    
-// }
-
-int     main(int ac, char **av)
-{
-    int i;
-    int *array;
-
-    i = 1;
-    array = parsing_arguments(ac,av,i);
-
-}
-
-// void    check_double(int *array, int index)
-// {
-//     int i;
-//     int j;
-
-//     i = 0;
-//     while(i != index)
-//     {
-//         j = 1;
-//         while(j != index)
-//         {
-//             if(array[i] == array[i + j])
-//                 put_error("double arguments !");
-//             j++;
-//         }
-//         i++;
-//     }
-// }
