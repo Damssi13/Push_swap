@@ -8,7 +8,7 @@ typedef struct s_stack{
 }stack;
 
 
-#include "../libft/libft.h"
+#include "./libft/libft.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>

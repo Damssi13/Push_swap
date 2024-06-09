@@ -38,6 +38,8 @@ rrr : rra and rrb at the same time.
 
 
 --> Double numbers X
---> empty string !
+--> empty string --########
 --> Max & Min
---> space in arg 
+--> space in arg --########
+--> zeros followed by a num
+--> signs (+ or -) in one --########

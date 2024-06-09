@@ -60,3 +60,41 @@ int main(int ac, char **av)
 {
     parse_args(ac,av);
 }
+// stack   *new_node(int value)
+// {
+//     stack *newnode;
+
+//     newnode = malloc(sizeof(stack));
+//     newnode->value = value;
+//     newnode->next = NULL;
+//     return(newnode);
+// }
+
+//  void    add_node(stack *a, stack *node)
+// {
+//     while(a->next)
+//         a = a->next;
+
+//     a->next = node; 
+    
+// }
+
+
+// void    check_double(int *array, int index)
+// {
+//     int i;
+//     int j;
+
+//     i = 0;
+//     while(i != index)
+//     {
+//         j = 1;
+//         while(j != index)
+//         {
+//             if(array[i] == array[i + j])
+//                 put_error("double arguments !");
+//             j++;
+//         }
+//         i++;
+//     }
+// }
