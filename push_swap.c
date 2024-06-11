@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void    space_check(char *str)
+void    space_check(char *str, char *to_be_free)
 {
     while(*str)
     {
@@ -9,42 +9,14 @@ void    space_check(char *str)
         else
             return ;
     }
+    if(*to_be_free != '\0')
+        free(to_be_free);
     ft_putstr_fd("Error space", 2);
 }
-
-void    check_unit(char *str)
-{
-    if(*str == '-' || *str == '+')
-        str++;
-    if(*str == '\0')
-        ft_putstr_fd("Error unit", 2);
-    while(*str)
-    {
-        if(*str >= '0' && *str <= '9')
-            str++;
-        else
-            ft_putstr_fd("Error unit", 2);
-    }
-}
-int     *fill_array(char **res)
+void    destroy_res(char **res)
 {
     int i;
-    int *array;
 
-    i = 0;
-    while(res[i])
-        i++;
-    array = (int *)malloc(sizeof(int) * i);
-    if(!array)
-        return NULL;
-    ft_bzero(array,i);
-    i = 0;
-    while(res[i])
-    {
-        check_unit(res[i]);
-        array[i] = ft_atoi(res[i]);
-        i++;
-    }
     i = 0;
     while(res[i])
     {
@@ -52,6 +24,56 @@ int     *fill_array(char **res)
         i++;
     }
     free(res);
+}
+void    destroy_array(int *array)
+{
+    free(array);
+}
+
+void    check_unit(char *str, char **res, int *array)
+{
+    if(*str == '-' || *str == '+')
+        str++;
+    if(*str == '\0')
+    {
+        destroy_res(res);
+        destroy_array(array);
+        ft_putstr_fd("Error unit", 2);
+    }
+    while(*str)
+    {
+        if(*str >= '0' && *str <= '9')
+            str++;
+        else
+        {
+            destroy_res(res);
+            destroy_array(array);
+            ft_putstr_fd("Error unit", 2);
+        }
+    }
+}
+
+int     *fill_array(char **res)
+{
+    int i;
+    int *array;
+    int len;
+
+    len = 0;
+    while(res[len])
+        len++;
+    array = malloc(sizeof(int ) * len);
+    if(!array)
+        return NULL;
+    i = 0;
+    while(res[i])
+    {
+        check_unit(res[i], res, array);
+        array[i] = ft_atoi(res[i]);
+        i++;
+    }
+    i = 0;
+    destroy_res(res);
     return(array);
 }
 
@@ -63,16 +85,14 @@ int     *parsing_args(int ac, char **av)
     char **res;
     char *tmp;
 
-
-    i = 1;
-    str = NULL;
-    i = 1;
+    space_check(av[1],"");
+    str = ft_strdup(av[1]);
+    i = 2;
     while(i < ac)
     {
-        space_check(av[i]);
+        space_check(av[i],str);
         tmp = ft_strjoin(str, av[i++]);
-        if(str != NULL)
-            free(str);
+        free(str);
         str = tmp;
     }
     res = ft_split(str,' ');
@@ -87,9 +107,9 @@ int     main(int ac, char **av)
     int *array;
 
     array = parsing_args(ac,av);
-
+    
     int j = 0; 
-    while(array[j])
+    while(j </*should be the size of the array*/ 5)
     {
         printf("%d\n", array[j]);
         j++;
