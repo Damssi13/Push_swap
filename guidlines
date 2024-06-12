@@ -37,9 +37,20 @@ rrr : rra and rrb at the same time.
 
 
 
---> Double numbers X
+--> Double numbers --########
 --> empty string --########
---> Max & Min
+--> Max & Min --########
+{
+    ---(if the input was very big it will overflow so it will turn back to a normal number tha)---
+    ^^^^^^you need to not let it overflow^^^^^^^
+    example: i input 5323458972349
+
+    if the input was bigger than max int or smaller than min int 
+    return error
+}
 --> space in arg --########
 --> zeros followed by a num
+{
+    I think it is   
+}
 --> signs (+ or -) in one --########

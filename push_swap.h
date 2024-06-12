@@ -3,9 +3,11 @@
 
 
 typedef struct s_stack{
-    int value;
+    int     value;
+    int     len;
+    int     *array;
     struct s_stack *next;
-}stack;
+}t_stack;
 
 
 #include "./libft/libft.h"
@@ -13,5 +15,6 @@ typedef struct s_stack{
 #include <unistd.h>
 #include <stdlib.h>
 
+void    destroy_res(char **res);
 
 #endif
