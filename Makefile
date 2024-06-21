@@ -2,6 +2,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 SRCS = push_swap.c\
+		init_stack.c
 
 OBJS = $(SRCS:.c=.o)
 

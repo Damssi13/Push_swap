@@ -51,6 +51,8 @@ rrr : rra and rrb at the same time.
 --> space in arg --########
 --> zeros followed by a num
 {
-    I think it is   
+    I think it is handled by itself by atoi.
 }
 --> signs (+ or -) in one --########
+
+now you need to sort the array
