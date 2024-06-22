@@ -41,28 +41,26 @@ void    init_stack(t_stack **a, char **str, int *array)
         ft_lstadd_back(a, ft_lstnew(content));
         i++;
     }
-
+    return ;
 }
 
-int main()
+void    ft_lstadd_front(t_stack **a, t_stack *new)
 {
-    t_stack     *head;
-    
-    head = NULL;
-    char *str = "-3 13 19 28 22 092";
-    char **res;
-    int *array;
-    res = ft_split(str, ' ');
+    t_stack *tmp;
 
-    array = malloc(sizeof(int));
-    
-    init_stack(&head, res, array);
+    tmp = *a;
 
-    while(head)
-    {
-        printf("|%d|\n", head->content);
-        head = head->next;
-    }
+    new->next = tmp;
+    *a = new;
+}
 
-    // ft_lstadd_back(&head, ft_lstnew(10));
+
+t_stack    *last_node(t_stack *stack)
+{
+    t_stack *tmp;
+
+    tmp = stack;
+    while(tmp->next)
+        tmp = tmp->next;
+    return tmp;
 }

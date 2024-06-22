@@ -69,6 +69,10 @@ int    push(t_stack **send, t_stack **receive)
   return 1;
 }
 
+
+
+
+
 void    ft_ps(t_stack **a, t_stack **b, char c)/////PUSH_A
 {
     if(c == 'a')
@@ -102,8 +106,10 @@ void    ft_ss(t_stack **a, t_stack **b, char c)
 void    ft_rs(t_stack **a, t_stack **b, char c)
 {
     if(c == 'a')
+    {
         if(rotate(a))
             write(1,"ra\n",3); 
+    }
     else
         if(rotate(b))
             write(1,"rb\n",3); 

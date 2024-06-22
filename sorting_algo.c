@@ -1,38 +1,44 @@
 #include "push_swap.h"
 
-/***********************THE_ALGORITHEM************************/
-
-int main(t_stack **a)
+int     stack_sorted(t_stack *stack)
 {
-    init_index();//you label the index to each node;
-    
-    //you count the len of the stack
-
-    int i = 0;
-    int stack_len = 0; //you can have it by counting the len fun
-    int range = 0; // befor you excute the algo you will need to
-        //set up the range depending on the len of the stack
-    while(a)
+    while(stack != NULL && stack->next != NULL)
     {
-        if((*a)->index <= i)
-        {
-            //push_to_B
-            //rotate_B
-            i++;
-        }
-        else if((*a)->index <= i + range)
-        {
-            //push_to_B
-            i++;
-        }
-        // in_index func return the position of the closest value to the minimum
-        // basically u check if the index's position is smaller/equal than len + range
-        else if(in_index(a, i, range) <= stack_len / 2)
-            //rotate_A
-            ;
-        else
-            //reverse_rotate_A
-            ;
-
+        if(stack->content > stack->next->content)
+            return 0;
+        stack = stack->next;
     }
+    return 1;
+}
+
+t_stack     *get_max(t_stack *stack)
+{
+    t_stack *tmp;
+    t_stack *max;
+
+    max = stack->next;
+    tmp = stack;
+    while(tmp)
+    {
+        if(tmp->content > max->content)
+            max = tmp;
+        tmp = tmp->next;
+    }
+    return max;
+}
+
+t_stack     *get_min(t_stack *stack)
+{
+    t_stack *tmp;
+    t_stack *min;
+
+    min = stack->next;
+    tmp = stack;
+    while(tmp)
+    {
+        if(tmp->content < min->content)
+            min = tmp;
+        tmp = tmp->next;
+    }
+    return min;
 }
