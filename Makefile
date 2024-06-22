@@ -3,6 +3,9 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 SRCS = 	init_stack.c\
 		parse_args.c\
+		helper.c\
+		instructions.c\
+		push_swap.c\
 		index.c\
 		helper.c\
 		sort_stack.c\

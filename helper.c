@@ -1,46 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helper.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: reddamss <reddamss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/22 20:39:01 by reddamss          #+#    #+#             */
+/*   Updated: 2024/06/22 21:35:19 by reddamss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-void     sort_array(int *array, int size)
-{
-    int i;
-    int tmp;
 
-    i = 0;
-    while(i < size - 1)
-    {
-        if(array[i] > array[i + 1])
-        {
-            tmp = array[i];
-            array[i] = array[i + 1];
-            array[i + 1] = tmp;
-            i = 0;
-        }
-        else
-            i++;
-    }
+void	destroy_res(char **res)
+{
+	int	i;
+
+	i = 0;
+	while (res[i])
+	{
+		free(res[i]);
+		i++;
+	}
+	free(res);
 }
 
-void    destroy_res(char **res)
+void	clear_stack(t_stack *a)
 {
-    int i;
+	t_stack	*tmp;
 
-    i = 0;
-    while(res[i])
-    {
-        free(res[i]);
-        i++;
-    }
-    free(res);
+	while (a)
+	{
+		tmp = a;
+		a = a->next;
+		free(tmp);
+	}
 }
 
-void    clear_stack(t_stack *a)
+void	clear_all(t_stack **a, char **str, int *array)
 {
-    t_stack *tmp;
-
-    while(a)
-    {
-        tmp = a;
-        a = a->next;
-        free(tmp);
-    }
+	destroy_res(str);
+	free(array);
+	clear_stack(*a);
 }
-

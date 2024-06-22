@@ -1,66 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: reddamss <reddamss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/22 20:34:03 by reddamss          #+#    #+#             */
+/*   Updated: 2024/06/22 20:34:04 by reddamss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-
-t_stack     *ft_lstnew(int content)
+t_stack	*ft_lstnew(int content)
 {
-    t_stack *newnode;
+	t_stack	*newnode;
 
-    newnode = malloc(sizeof(t_stack));
-    if(!newnode)
-        return NULL;
-    newnode->content = content;
-    newnode->next = NULL;
-    return(newnode);
+	newnode = malloc(sizeof(t_stack));
+	if (!newnode)
+		return (NULL);
+	newnode->content = content;
+	newnode->next = NULL;
+	return (newnode);
 }
 
-void    ft_lstadd_back(t_stack **a, t_stack *new)
+void	ft_lstadd_back(t_stack **a, t_stack *new)
 {
-    t_stack *tmp;
+	t_stack	*tmp;
 
-    tmp = *a;
-    if(*a == NULL)
-    {
-        *a = new;
-        return ;
-    }
-    while(tmp->next != NULL)
-        tmp = tmp->next;
-    tmp->next = new;
-
+	tmp = *a;
+	if (*a == NULL)
+	{
+		*a = new;
+		return ;
+	}
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = new;
 }
 
-void    init_stack(t_stack **a, char **str, int *array)
+void	init_stack(t_stack **a, char **str, int *array)
 {
-    int i;
-    int content;
+	int	i;
+	int	content;
 
-    i = 0;
-    while(str[i])
-    {
-        content = ft_atoi(str[i], array, str);
-        ft_lstadd_back(a, ft_lstnew(content));
-        i++;
-    }
-    return ;
+	i = 0;
+	while (str[i])
+	{
+		content = ft_atoi(str[i], array, str);
+		ft_lstadd_back(a, ft_lstnew(content));
+		i++;
+	}
+	return ;
 }
 
-void    ft_lstadd_front(t_stack **a, t_stack *new)
+void	ft_lstadd_front(t_stack **a, t_stack *new)
 {
-    t_stack *tmp;
+	t_stack	*tmp;
 
-    tmp = *a;
-
-    new->next = tmp;
-    *a = new;
+	tmp = *a;
+	new->next = tmp;
+	*a = new;
 }
 
-
-t_stack    *last_node(t_stack *stack)
+t_stack	*last_node(t_stack *stack)
 {
-    t_stack *tmp;
+	t_stack	*tmp;
 
-    tmp = stack;
-    while(tmp->next)
-        tmp = tmp->next;
-    return tmp;
+	tmp = stack;
+	while (tmp->next)
+		tmp = tmp->next;
+	return (tmp);
 }
